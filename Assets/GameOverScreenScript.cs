@@ -13,4 +13,8 @@ public class GameOverScreenScript : MonoBehaviour {
     public void onClickTryAgain() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
+
+    public void onClickQuit() {
+        Application.Quit();
+    }
 }
