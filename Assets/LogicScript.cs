@@ -27,8 +27,8 @@ public class LogicScript : MonoBehaviour {
     }
 
     public async void gameOver() {
-        gameOverSound.Play();
         gameActive = false;
+        gameOverSound.Play();
         await WaitAsync();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

@@ -26,8 +26,10 @@ public class CharacterScript : MonoBehaviour {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        collisionSound.Play();
-        gameOver();
+        if(logic.gameActive) {
+            collisionSound.Play();
+            gameOver();
+        }
     }
 
     private void gameOver() {
