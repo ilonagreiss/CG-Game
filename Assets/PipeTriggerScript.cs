@@ -10,7 +10,7 @@ public class PipeTriggerScript : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject.layer == 3) {
+        if(collision.gameObject.layer == 3 && logic.gameActive) {
             logic.increaseScore();
         }
     }
