@@ -10,6 +10,7 @@ public class LogicScript : MonoBehaviour {
     public int playerScore;
     public Text scoreText;
     public bool gameActive = false;
+    public AudioSource gameOverSound;
 
     void Start() {
         startNewGame();
@@ -26,12 +27,13 @@ public class LogicScript : MonoBehaviour {
     }
 
     public async void gameOver() {
+        gameOverSound.Play();
         gameActive = false;
-        await WaitOneSecondAsync();
+        await WaitAsync();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    private async Task WaitOneSecondAsync() {
-        await Task.Delay(TimeSpan.FromSeconds(1));
+    private async Task WaitAsync() {
+        await Task.Delay(TimeSpan.FromSeconds(1.5));
     }
 }
