@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/Start Screen.unity
+    guid: d88d91312a3dc4d7b9eb8cd14d7f3612
+  - enabled: 1
+    path: Assets/Scenes/Infinite Runner.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Game Over Screen.unity
+    guid: d5d71cdfd4d4442d0925f44e54e6f7ff
   m_configObjects: {}
