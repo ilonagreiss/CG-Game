@@ -19,8 +19,8 @@ public class LogicScript : MonoBehaviour {
         gameActive = true;
     }
 
-    public void increaseScore() {
-        playerScore += 1;
+    public void increaseScore(int num) {
+        playerScore += num;
         currentScoreText.text = playerScore.ToString();
     }
 
