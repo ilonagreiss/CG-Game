@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
+using System;
 
 public class CharacterScript : MonoBehaviour {
     public Rigidbody2D rigidBody;
     public LogicScript logic;
     public AudioSource collisionSound;
     public AudioSource jumpSound;
-    public bool charIsAlive = true;
     public SpriteRenderer spriteRenderer;
     public Color originalColor;
+    public bool charIsAlive = true;
+    public bool isGhost = false;
 
     void Start() {
         originalColor = spriteRenderer.color;
@@ -26,35 +29,35 @@ public class CharacterScript : MonoBehaviour {
             if(transform.position.y > 16 || transform.position.y < -16) {
                 gameOver();
             }
+
+            if(isGhost) {
+                Color ghostColor = originalColor;
+                ghostColor.a = 0.5f; // Set the alpha value to a semi-transparent value (0 = fully transparent, 1 = fully opaque) to make sprite look like a ghost
+                spriteRenderer.color = ghostColor;
+            } else {
+                spriteRenderer.color = originalColor;
+            }
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(logic.gameActive) {
+            charIsAlive = false;
             collisionSound.Play();
             gameOver();
-            charIsAlive = false;
         }
     }
 
-    public void TogglePipeCollision(bool enableCollision) {
-        // Enable or disable the characters's collider with the pipes
-        GetComponent<Collider2D>().enabled = enableCollision;
+    public async void ActivateGhostMode() {
+        GetComponent<Collider2D>().isTrigger = true;
+        isGhost = true;
+        await WaitAsync();
+        GetComponent<Collider2D>().isTrigger = false;
+        isGhost = false;
     }
 
-    public void SetGhostMode(bool isGhost) {
-        if (isGhost)
-        {
-            // Adjust the transparency of the sprite to make it look like a ghost
-            Color ghostColor = originalColor;
-            ghostColor.a = 0.5f; // Set the alpha value to a semi-transparent value (0 = fully transparent, 1 = fully opaque)
-            spriteRenderer.color = ghostColor;
-        }
-        else
-        {
-            // Reset the transparency of the sprite to normal
-            spriteRenderer.color = originalColor;
-        }
+    private async Task WaitAsync() {
+        await Task.Delay(TimeSpan.FromSeconds(5));
     }
 
     private void gameOver() {
