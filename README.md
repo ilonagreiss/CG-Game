@@ -1,6 +1,6 @@
 # CG-Game
 
-This is a infinite jumper game by Ilona Greiß (580838) and Koco Dhami (580776)
+This is an infinite jumper game by Ilona Greiß (580838) and Koco Dhami (580776)
 The base of the game is inspired by following tutorial: https://www.youtube.com/watch?v=XtQMytORBmM&t=684s
 
 Additionally we incooporated following features:
