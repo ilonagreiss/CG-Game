@@ -3,7 +3,7 @@
 This is an infinite jumper game by Ilona Greiß (580838) and Koco Dhami (580776)
 The base of the game is inspired by following tutorial: https://www.youtube.com/watch?v=XtQMytORBmM&t=684s
 
-Additionally we incooporated following features:
+Additionally we incoporated following features:
 - Start screen
 - End screen (with re-try, quit button and score)
 - Ghost power up: character can not die, while ghost mode (ananas)
